@@ -1,4 +1,3 @@
 function solution(num, n) {
-    if(num % n) return 0
-    return 1
+    return num % n ? 0 : 1
 }
