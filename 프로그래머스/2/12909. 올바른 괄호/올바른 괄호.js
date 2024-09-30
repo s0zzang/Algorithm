@@ -1,9 +1,9 @@
 function solution(s){
-    if(!s.length % 2) return false;
-    const stack = []
+    // 숫자만 이용한 풀이법
+    let stack = 0;
     for(let str of s){
-        if(str === '(') stack.push(str)
-        else if(stack.pop() !== '(') return false
+        str === '(' ? stack++ : stack--
+        if(stack < 0) return false
     }
-    return stack.length === 0
+    return stack === 0
 }
