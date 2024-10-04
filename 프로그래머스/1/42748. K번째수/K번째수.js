@@ -1,7 +1,8 @@
 function solution(array, commands) {
     const res = [];
     for(let command of commands) {
-        res.push(array.slice(command[0]-1, command[1]).sort((a,b) => a-b)[command[2]-1])
+        const [start, end, position] = command
+        res.push(array.slice(start-1, end).sort((a,b) => a-b)[position-1])
     }
     return res
 }
