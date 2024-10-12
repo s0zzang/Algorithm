@@ -2,20 +2,18 @@ function solution(maps) {
     const row = maps.length;
     const col = maps[0].length;
     const visited = Array(row).fill().map(_ => Array(col).fill(false))
-    const q = []
+    const q = [[0,0,1]]
     const delta = [[-1,0],[1,0],[0,-1],[0,1]]
-    let result = -1;
     let head = 0;
     
-    q.push([0,0,1])
     visited[0][0] = true
     
-    while(head < q.length){
-        const [curX, curY, curL] = q[head];
-        head++;
+    while(q.length){
+        const [curX, curY, curL] = q.shift();
+        // head++;
         
         if(curX === row-1 && curY === col-1) {
-            result = curL;
+            return curL;
             break;
         }
             
@@ -32,5 +30,5 @@ function solution(maps) {
         }
     }
     
-    return result
+    return -1
 }
