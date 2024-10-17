@@ -1,14 +1,11 @@
 function solution(priorities, location) {
     const result = [];
-    let q = priorities.map((priority, idx) => ({
-        priority, idx
-    }));
+    let q = priorities.map((priority, idx) => ({priority, idx}));
     
     while(q.length){
         const {priority,idx} = q.shift()
-        let chk = 0;
-        for(let item of q) if(priority >= item.priority) chk++
-        if(chk === q.length) result.push({priority, idx})
+        const isMax = q.every(item => priority >= item.priority)
+        if(isMax) result.push({priority, idx})
         else q.push({priority, idx})
     }
     
