@@ -4,9 +4,9 @@ function solution(priorities, location) {
     
     while(q.length){
         const {priority,idx} = q.shift()
-        const isMax = q.every(item => priority >= item.priority)
-        if(isMax) result.push({priority, idx})
-        else q.push({priority, idx})
+        const isMin = q.some(item => priority < item.priority)
+        if(isMin) q.push({priority, idx})
+        else result.push({priority, idx})
     }
     
     return result.findIndex(i => i.idx == location) + 1
