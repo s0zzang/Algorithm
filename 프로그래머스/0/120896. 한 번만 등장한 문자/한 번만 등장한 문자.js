@@ -1,13 +1,5 @@
 function solution(s) {
-    const strs = [...s]
-    const dupli = [];
-    const result = [];
-    
-    for(item of s){
-        const i = strs.shift()
-        if(strs.includes(i) || dupli.includes(i)) dupli.push(i)
-        else result.push(i)
-    }
-    
-    return result.sort().join('')
+    const map = new Map()
+    for(i of s) map.set(i, map.get(i)+1 || 1);
+    return [...map].filter(([k,v]) => v === 1).map(i => i[0]).sort().join('')
 }
