@@ -3,7 +3,7 @@ function solution(s) {
     const dupli = [];
     const result = [];
     
-    for(item of [...s]){
+    for(item of s){
         const i = strs.shift()
         if(strs.includes(i) || dupli.includes(i)) dupli.push(i)
         else result.push(i)
