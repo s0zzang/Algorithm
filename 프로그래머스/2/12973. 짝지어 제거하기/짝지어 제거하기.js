@@ -3,9 +3,8 @@ function solution(s){
     const strs = [...s]
     if(s.length % 2) return 0
     for(let i=0; i<s.length; i++){
-        const target = strs.pop()
-        if(target === stack[stack.length-1]) stack.pop()
-        else stack.push(target)
+        if(strs[i] === stack[stack.length-1]) stack.pop()
+        else stack.push(strs[i])
     }
     return stack.length ? 0 : 1
 }
