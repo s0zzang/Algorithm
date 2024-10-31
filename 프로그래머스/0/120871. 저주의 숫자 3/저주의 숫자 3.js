@@ -1,8 +1,3 @@
 function solution(n) {
-    let res = 0;
-    for(let i=0; i<n; i++){
-        res += 1;
-        while ( !(res % 3) || String(res).includes('3') ) res += 1;
-    }
-    return res;
+    return [...Array(n*3)].map((_,i) => i+1).filter(num => num%3 && !String(num).includes('3'))[n-1]
 }
