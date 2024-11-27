@@ -17,8 +17,7 @@ function solution(n) {
         
     */
     
-    if(n === 1) return 1
-    if(n === 2) return 2
+    if(n < 3) return n
     
     const dp = [0, 1, 2]
     for(i=3; i<=n; i++){
