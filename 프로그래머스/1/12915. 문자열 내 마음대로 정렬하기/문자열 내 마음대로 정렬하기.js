@@ -1,5 +1,3 @@
 function solution(strings, n) {
-    return strings.sort((a, b) => a[n] === b[n] 
-        ? a.localeCompare(b)
-        : a[n].localeCompare(b[n]))
+    return strings.map(a=>[...a][n]+a).sort().map(a=>a.substring(1))
 }
