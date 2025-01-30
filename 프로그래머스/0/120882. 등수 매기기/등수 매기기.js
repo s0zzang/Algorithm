@@ -1,6 +1,6 @@
 function solution(score) {
     const average = score.map(([en, math]) => (en + math)/2);
-    const sort = score.map(([en, math]) => (en + math)/2).sort((a,b) => b-a)
+    const sort = [...average].sort((a,b) => b-a)
     const map = new Map();
     let rank = 0;
     
