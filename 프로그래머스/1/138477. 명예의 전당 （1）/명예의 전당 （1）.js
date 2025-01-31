@@ -1,10 +1,12 @@
 function solution(k, score) {    
-    const list = [];
-    return score.reduce((a,c) => {
-        list.push(c)
+    const [list, result] = [[], []];
+    
+    for(let s of score){
+        list.push(s)
         list.sort((a,b) => a-b)
         if(list.length > k) list.shift()
-        a.push(list[0])
-        return a
-    }, [])
+        result.push(list[0])
+    }
+    
+    return result
 }
