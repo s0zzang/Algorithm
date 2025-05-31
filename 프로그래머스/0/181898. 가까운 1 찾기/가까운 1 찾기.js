@@ -1,3 +1,3 @@
 function solution(arr, idx) {
-    return arr.findIndex((el,i) => i>=idx && el === 1)
+    return arr.indexOf(1, idx)
 }
