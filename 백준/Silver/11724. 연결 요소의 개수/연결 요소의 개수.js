@@ -21,8 +21,10 @@ const dfs = (startV) => {
 };
 
 for (el in graph) {
-  if (!visited[el]) count++;
-  dfs(el);
+  if (!visited[el]) {
+    count++;
+    dfs(el);
+  }
 }
 
 console.log(count);
