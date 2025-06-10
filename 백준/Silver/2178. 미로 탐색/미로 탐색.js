@@ -1,10 +1,8 @@
 const fs = require("fs");
 const input = fs.readFileSync(0).toString().trim().split("\n");
 const [N, M] = input.shift().split(" ").map(Number);
+const maze = input.map((line) => line.split("").map(Number));
 
-const visited = Array(N)
-  .fill()
-  .map(() => Array(M).fill(false));
 const delta = [
   [-1, 0],
   [0, 1],
@@ -12,28 +10,22 @@ const delta = [
   [0, -1],
 ];
 
-const bfs = (x, y, d) => {
-  const q = [[x, y, d]];
-  visited[x][y] = true;
+const bfs = (x, y) => {
+  const q = [[x, y]];
+
   while (q.length) {
-    const [x, y, d] = q.shift();
-    if (x === N - 1 && y === M - 1) return console.log(d);
+    const [x, y] = q.shift();
+    if (x === N - 1 && y === M - 1) return console.log(maze[x][y]);
 
     for (const [dx, dy] of delta) {
       const [nx, ny] = [dx + x, dy + y];
-      if (
-        nx >= 0 &&
-        nx < N &&
-        ny >= 0 &&
-        ny < M &&
-        !visited[nx][ny] &&
-        input[nx][ny] == 1
-      ) {
-        q.push([nx, ny, d + 1]);
-        visited[nx][ny] = true;
-      }
+      if (nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
+      if (maze[nx][ny] !== 1) continue;
+
+      q.push([nx, ny]);
+      maze[nx][ny] = maze[x][y] + 1;
     }
   }
 };
 
-bfs(0, 0, 1);
+bfs(0, 0);
