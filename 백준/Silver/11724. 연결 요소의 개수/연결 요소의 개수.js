@@ -12,17 +12,25 @@ for (const line of input) {
 
 const visited = Array(N + 1).fill(false);
 let count = 0;
-const dfs = (startV) => {
-  visited[startV] = true;
-  for (const el of graph[startV]) {
-    if (!visited[el]) dfs(el);
+const bfs = (v) => {
+  const q = [v];
+  visited[v] = true;
+
+  while (q.length) {
+    const current = q.shift();
+    for (const v of graph[current]) {
+      if (!visited[v]) {
+        q.push(v);
+        visited[v] = true;
+      }
+    }
   }
 };
 
 for (el in graph) {
   if (!visited[el]) {
     count++;
-    dfs(el);
+    bfs(el);
   }
 }
 
