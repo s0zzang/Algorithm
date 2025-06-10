@@ -11,7 +11,7 @@ for (const line of input) {
 }
 for (line in graph) graph[line].sort((a, b) => a - b);
 
-const visited = [];
+const visited = Array(N + 1).fill(false);
 let count = 0;
 const dfs = (startV) => {
   visited[startV] = true;
